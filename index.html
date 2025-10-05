@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inka — Marketing Research Agency</title>
+  <style>
+    :root{
+      --bg:#ffeef2;
+      --pink-100:#ffd7e6;
+      --pink-200:#ffb3cf;
+      --accent:#d95c80;
+      --muted:#7a4f63;
+      --card:#fff;
+      --shadow: 0 6px 18px rgba(133,63,91,0.12);
+      --radius:14px;
+      --container: 1000px;
+      font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--bg) 0%, #fff 70%);
+      color: #5b2b3b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px 16px;
+    }
+
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 12px;
+    }
+
+    .logo{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo .icon{
+      width:40px;
+      height:40px;
+      border-radius:8px;
+      background:linear-gradient(135deg,var(--pink-200),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:18px;
+      box-shadow: 0 6px 14px rgba(217,92,128,0.18);
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    nav a:hover{ background: rgba(217,92,128,0.06); color:var(--accent) }
+
+    /* Hero */
+    .hero{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      padding:24px 12px;
+      margin-top:6px;
+    }
+
+    .hero-left{
+      flex:1;
+      min-width:220px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-weight:600;
+      background:linear-gradient(90deg,#ffd7e6,#ffc4d9);
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-size:13px;
+    }
+
+    .hero h1{
+      margin:0 0 12px 0;
+      font-size:36px;
+      line-height:1.02;
+      color:#8b2f4a;
+      letter-spacing:-0.6px;
+    }
+
+    .hero p.lead{
+      margin:0 0 18px 0;
+      color:#7b4a5e;
+      font-size:16px;
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      padding:12px 18px;
+      border-radius:10px;
+      border:none;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 8px 18px rgba(217,92,128,0.18);
+      transition:transform .12s ease,box-shadow .12s;
+    }
+    .btn:hover{ transform:translateY(-2px) }
+
+    /* hero right illustration */
+    .hero-right{
+      width:320px;
+      max-width:44%;
+      min-width:220px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .chart-card{
+      width:320px;
+      height:220px;
+      background:linear-gradient(180deg, #fff 0%, #fff 55%);
+      border-radius:20px;
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:visible;
+    }
+
+    .chart-card .chart-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    .chart-card .chart-header .title{
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .chart{
+      width:100%;
+      height:120px;
+      display:flex;
+      gap:8px;
+      align-items:end;
+    }
+
+    .bar{
+      background:linear-gradient(180deg,var(--pink-100),var(--pink-200));
+      border-radius:6px 6px 0 0;
+      width:16%;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      color:#fff;
+      font-weight:700;
+      padding-bottom:6px;
+      box-shadow: inset 0 -6px 14px rgba(255,255,255,0.06);
+    }
+
+    /* For Students */
+    .students{
+      margin-top:28px;
+      display:flex;
+      gap:22px;
+      align-items:center;
+      padding:22px 12px;
+    }
+    .students .info{
+      flex:1;
+    }
+    .students h2{
+      margin:0 0 8px 0;
+      color:#8b2f4a;
+      font-size:22px;
+    }
+    .students p{ margin:0 0 12px 0; color:#7b4a5e }
+
+    .students .ill{
+      width:260px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fff,#fff);
+      box-shadow: var(--shadow);
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* cards */
+    .cards{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      padding:12px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(133,63,91,0.06);
+      text-align:center;
+    }
+    .card .ico{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      margin:0 auto 12px auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, #fff, var(--pink-100));
+      color:var(--accent);
+      font-weight:700;
+      font-size:20px;
+      box-shadow: 0 8px 16px rgba(217,92,128,0.06);
+    }
+    .card h3{ margin:0 0 8px 0; color:#7a3a4f; font-size:16px }
+    .card p{ margin:0; font-size:13px; color:#7b4a5e }
+
+    footer{
+      margin-top:40px;
+      padding:18px 12px;
+      text-align:center;
+      color:#7b4a5e;
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{flex-direction:column; gap:18px}
+      .hero-right{max-width:100%}
+      .cards{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:600px){
+      nav{display:none}
+      .cards{grid-template-columns:1fr}
+      .students{flex-direction:column; align-items:flex-start}
+      .hero h1{font-size:28px}
+      .chart-card{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div id="root" class="wrap"></div>
+
+  <!-- React + ReactDOM + Babel (for quick demo). In production, нужно собрать через bundler. -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Logo(){
+      return (
+        <div className="logo" aria-hidden>
+          <div className="icon">IN</div>
+          <div>
+            <div style={{fontWeight:800,color:"#8b2f4a"}}>INKA</div>
+            <div style={{fontSize:12,color:"#7b4a5e",marginTop:2}}>Marketing Research</div>
+          </div>
+        </div>
+      );
+    }
+
+    function Header(){
+      return (
+        <header>
+          <Logo />
+          <nav aria-label="Главная навигация">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+      );
+    }
+
+    function ChartIllustration(){
+      // simple bars with varying heights
+      const heights = [40,75,60,120,90];
+      return (
+        <div className="chart-card" role="img" aria-label="Иллюстрация диаграммы">
+          <div className="chart-header">
+            <div className="title">Market Overview</div>
+            <div style={{fontSize:12,color:"#bb7a8e"}}>Q2</div>
+          </div>
+          <div className="chart" style={{alignItems:'flex-end'}}>
+            {heights.map((h,i)=>(
+              <div key={i} className="bar" style={{height:h + "px", width: `${14 + i}px`, borderRadius:10}}>
+                {/* small dot or value */}
+              </div>
+            ))}
+          </div>
+
+          <svg width="100%" height="40" style={{position:'absolute',bottom:10,left:0}} viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden>
+            <circle cx="10" cy="10" r="3" fill="#ffd7e6"/>
+            <circle cx="30" cy="10" r="3" fill="#ffc4d9"/>
+            <circle cx="50" cy="10" r="3" fill="#ffb3cf"/>
+            <circle cx="70" cy="10" r="3" fill="#ffb3cf"/>
+            <circle cx="90" cy="10" r="3" fill="#ffd7e6"/>
+          </svg>
+        </div>
+      );
+    }
+
+    function Hero(){
+      return (
+        <section className="hero" id="home">
+          <div className="hero-left">
+            <div className="eyebrow">MARKETING RESEARCH AGENCY</div>
+            <h1>We provide insights and solutions for businesses of all sizes</h1>
+            <p className="lead">Data-driven research, clear visualizations and strategy recommendations to grow your brand.</p>
+            <div style={{display:'flex',gap:12}}>
+              <button className="btn" onClick={()=>alert('Get started — demo')}>Get Started</button>
+              <button style={{padding:'12px 18px',borderRadius:10,background:'#fff',border:'1px solid rgba(120,60,80,0.06)',cursor:'pointer'}} onClick={()=>alert('Contact form — demo')}>Contact</button>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <ChartIllustration />
+          </div>
+        </section>
+      );
+    }
+
+    function StudentsSection(){
+      return (
+        <section className="students" id="students">
+          <div className="info">
+            <h2>FOR STUDENTS</h2>
+            <p>We offer access to data and research tools to support your academic work.</p>
+            <button className="btn" onClick={()=>alert('Learn more — demo')}>Learn More</button>
+          </div>
+
+          <div className="ill" aria-hidden>
+            <svg width="180" height="120" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="24" width="168" height="84" rx="10" fill="#fff"/>
+              <rect x="26" y="36" width="108" height="56" rx="6" fill="#ffd7e6"/>
+              <rect x="34" y="44" width="90" height="8" rx="4" fill="#ffb3cf"/>
+              <rect x="34" y="58" width="70" height="8" rx="4" fill="#ffb3cf" opacity="0.9"/>
+              <rect x="34" y="72" width="50" height="8" rx="4" fill="#ffb3cf" opacity="0.8"/>
+              <circle cx="146" cy="46" r="8" fill="#ffc4d9"/>
+            </svg>
+          </div>
+        </section>
+      );
+    }
+
+    function Card({title, text, icon}){
+      return (
+        <div className="card">
+          <div className="ico">{icon}</div>
+          <h3>{title}</h3>
+          <p>{text}</p>
+        </div>
+      );
+    }
+
+    function Cards(){
+      return (
+        <div className="cards" id="services">
+          <Card title="FOR MARKETERS" text="Get insights and data to inform your marketing strategies" icon="M" />
+          <Card title="FOR EMPLOYERS" text="Understand market trends and make informed hiring decisions" icon="E" />
+          <Card title="FOR STARTUPS" text="Gain insights to help launch and grow your business" icon="S" />
+        </div>
+      );
+    }
+
+    function Footer(){
+      return (
+        <footer>
+          © {new Date().getFullYear()} INKA — Marketing Research Agency · Crafted demo
+        </footer>
+      );
+    }
+
+    function App(){
+      return (
+        <div>
+          <Header />
+          <Hero />
+          <StudentsSection />
+          <Cards />
+          <Footer />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
